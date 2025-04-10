@@ -14,7 +14,7 @@ public class TiroInimigo : MonoBehaviour
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
-        rigidbody.linearVelocity = transform.up * speed;
+        rigidbody.velocity = transform.up * speed;
         Destroy(gameObject, destroitiro);
     }
 

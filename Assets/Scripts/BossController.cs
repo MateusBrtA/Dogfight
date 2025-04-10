@@ -79,11 +79,11 @@ public class BossController : MonoBehaviour
 
         if (direita)
         {    
-            rb.linearVelocity = new Vector3(speed, 0f);
+            rb.velocity = new Vector3(speed, 0f);
         }
         else
         {
-            rb.linearVelocity = new Vector3(-speed, 0f);
+            rb.velocity = new Vector3(-speed, 0f);
         }
 
         if (transform.position.x >= limiteH)
@@ -98,7 +98,7 @@ public class BossController : MonoBehaviour
 
     private void Stage2()
     {
-        rb.linearVelocity = Vector2.zero;
+        rb.velocity = Vector2.zero;
 
         if (CooldownTiro <= 0f)
         {
@@ -113,7 +113,7 @@ public class BossController : MonoBehaviour
 
     private void Stage3()
     {
-        rb.linearVelocity = Vector2.zero;
+        rb.velocity = Vector2.zero;
         
         if (Time.time > nextFire)
         {
@@ -146,7 +146,7 @@ public class BossController : MonoBehaviour
             var tiro = Instantiate(TiroSeguir, posicaoTiro3.transform.position, posicaoTiro3.transform.rotation);
             Vector2 direcao = Aviao.transform.position - tiro.transform.position;
             direcao.Normalize();
-            tiro.GetComponent<Rigidbody>().linearVelocity = direcao * velocidadeTiro;
+            tiro.GetComponent<Rigidbody>().velocity = direcao * velocidadeTiro;
             float angulo = Mathf.Atan2(direcao.y, direcao.x) * Mathf.Rad2Deg;
             tiro.transform.rotation = Quaternion.Euler(0f, 0f, angulo - 90f);
         }

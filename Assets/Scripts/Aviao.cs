@@ -116,14 +116,14 @@ public class Aviao : MonoBehaviour
         Vector3 moviment = new Vector3(moveHorizontal, moveVertical, 0.0f);
 
         //velocidade de movimento
-        rigidbody.linearVelocity = moviment * speed;
+        rigidbody.velocity = moviment * speed;
 
         rigidbody.position = new Vector3(
             Mathf.Clamp(rigidbody.position.x, bordas.xMin, bordas.xMax),
             Mathf.Clamp(rigidbody.position.y, bordas.yMin, bordas.yMax),
             0.0f);
         //rotacionar a nave
-        rigidbody.rotation = Quaternion.Euler(0.0f, 0.0f, rigidbody.linearVelocity.x * -slope);
+        rigidbody.rotation = Quaternion.Euler(0.0f, 0.0f, rigidbody.velocity.x * -slope);
     }
 
     private void OnTriggerEnter(Collider other)
